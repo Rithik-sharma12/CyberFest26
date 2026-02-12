@@ -1,186 +1,184 @@
-# College Event Registration Platform
+# Cyberfeast - Static Website
 
-A secure, full-stack event registration platform for colleges built with Django REST Framework and React.
+A modern, cyberpunk-themed event registration platform built with pure HTML, CSS, and JavaScript.
 
-## 🏗️ Architecture
+## ✨ Features
 
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│                 │     │                 │     │                 │
-│   React SPA     │────▶│  Django REST    │────▶│   Supabase      │
-│   (Frontend)    │     │  API (Backend)  │     │   PostgreSQL    │
-│                 │     │                 │     │                 │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-     Port 5173              Port 8000              Cloud DB
-```
-
-## 📁 Project Structure
-
-```
-code/
-├── backend/            # Django REST API
-│   ├── core/           # Project settings
-│   ├── accounts/       # User auth
-│   ├── events/         # Event management
-│   ├── registrations/  # Registration handling
-│   └── README.md
-│
-├── frontend/           # React SPA
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── context/
-│   └── README.md
-│
-└── README.md           # This file
-```
+- 🎨 **Cyberpunk Design** - Modern, futuristic UI with neon colors and glowing effects
+- 📱 **Fully Responsive** - Works perfectly on desktop, tablet, and mobile
+- ⚡ **Fast & Lightweight** - Pure HTML/CSS/JS with no build process required
+- 💾 **Client-Side Storage** - Registrations saved in browser localStorage
+- 🎯 **6 Pre-loaded Events** - Sample events ready to explore
+- 🚀 **Simple Registration** - Just name, email, and phone - no authentication needed
+- 🎭 **Event Filtering** - Filter by category (Tech, Cultural, Sports, Business)
+- 🔍 **Event Details** - View full event information in beautiful modals
 
 ## 🚀 Quick Start
 
-### Prerequisites
+### No Installation Required!
 
-- Python 3.10+
-- Node.js 18+
-- PostgreSQL (or Supabase account)
+This is a pure static website. Just open `index.html` in your browser:
 
-### Backend Setup
+1. **Download or clone** this repository
+2. **Open** `index.html` in any modern web browser
+3. **That's it!** The website is ready to use
 
+### Using a Local Server (Optional)
+
+For the best experience, you can serve it with a simple HTTP server:
+
+**Option 1: Python**
 ```bash
-cd backend
+# Python 3
+python -m http.server 8000
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your database credentials
-
-# Run migrations
-python manage.py migrate
-
-# Create admin user
-python manage.py createsuperuser
-
-# Start server
-python manage.py runserver
+# Then visit http://localhost:8000
 ```
 
-### Frontend Setup
-
+**Option 2: Node.js**
 ```bash
-cd frontend
+# Install http-server globally (one time)
+npm install -g http-server
 
-# Install dependencies
-npm install
+# Run server
+http-server -p 8000
 
-# Configure environment
-cp .env.example .env.local
-# Set VITE_API_BASE_URL=http://localhost:8000/api
-
-# Start development server
-npm run dev
+# Then visit http://localhost:8000
 ```
 
-## 🔐 Security Features
+**Option 3: VS Code Live Server**
+- Install the "Live Server" extension in VS Code
+- Right-click on `index.html` and select "Open with Live Server"
 
-- JWT authentication with refresh tokens
-- Password hashing with Django's PBKDF2
-- CORS allowlist configuration
-- Rate limiting on registration endpoints
-- CSRF protection
-- SQL injection protection via ORM
-- Input validation on all endpoints
-- Audit logging for sensitive operations
-
-## 📋 Features
-
-### User Features
-- Browse active events
-- Register for events
-- Submit payment proof
-- Track registration status
-- View registration history
-
-### Admin Features
-- Manage events (CRUD)
-- View all registrations
-- Verify/reject payments
-- View registration statistics
-
-## 🛠️ Tech Stack
-
-### Backend
-- Django 5.x
-- Django REST Framework
-- SimpleJWT
-- PostgreSQL (Supabase)
-
-### Frontend
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS 3
-- TanStack React Query
-- React Hook Form + Zod
-
-## 📖 API Documentation
-
-See [backend/README.md](backend/README.md) for full API documentation.
-
-### Key Endpoints
+## 📂 File Structure
 
 ```
-# Auth
-POST /api/auth/register/
-POST /api/auth/login/
-POST /api/auth/logout/
-
-# Events
-GET  /api/events/
-GET  /api/events/{id}/
-
-# Registrations
-POST /api/registrations/
-GET  /api/registrations/me/
-PATCH /api/registrations/admin/{id}/verify/
+KCG_EVENT/
+├── index.html       # Main HTML file
+├── style.css        # All styles and animations
+├── script.js        # Event data and functionality
+└── README.md        # This file
 ```
 
-## 🧪 Testing
+## 🎯 Features Overview
 
-### Backend Tests
-```bash
-cd backend
-pytest
+### Events Management
+- View all events in a beautiful grid layout
+- Filter events by category (All, Tech, Cultural, Sports, Business)
+- Click on any event to view full details
+- Real-time capacity tracking
+
+### Registration System
+- Simple registration form (Name, Email, Phone)
+- Form validation
+- Duplicate registration prevention
+- Registrations stored in browser localStorage
+- Visual feedback on successful registration
+
+### User Interface
+- Smooth scrolling navigation
+- Animated hero section with statistics
+- Interactive event cards with hover effects
+- Modal popups for event details and registration
+- Success notifications
+- Fully responsive design for all screen sizes
+
+## 🎨 Customization
+
+### Changing Events
+Edit the `events` array in `script.js`:
+
+```javascript
+const events = [
+    {
+        id: 1,
+        title: 'Your Event Name',
+        description: 'Event description...',
+        date: '2026-03-15',
+        time: '10:00 AM',
+        venue: 'Event Venue',
+        capacity: 500,
+        registered: 0,
+        fee: 500,
+        category: 'tech',
+        image: 'image-url.jpg',
+        // ... more fields
+    }
+    // Add more events
+];
 ```
 
-### Frontend Tests
-```bash
-cd frontend
-npm run test  # when tests are added
+### Changing Colors
+Edit CSS variables in `style.css`:
+
+```css
+:root {
+    --primary: #ff0055;      /* Main accent color */
+    --secondary: #00ffff;    /* Secondary accent */
+    --accent: #ffff00;       /* Additional accent */
+    --dark: #0a0a0f;        /* Background */
+    /* ... more variables */
+}
 ```
 
-## 📦 Deployment
+## 🌐 Deployment
 
-### Backend (Example with Gunicorn)
-```bash
-gunicorn core.wsgi:application --bind 0.0.0.0:8000
-```
+This static website can be deployed to any hosting service:
 
-### Frontend (Build)
-```bash
-npm run build
-# Deploy dist/ folder to static hosting
-```
+### Free Hosting Options
 
-## 📝 License
+1. **GitHub Pages**
+   - Push code to GitHub
+   - Enable GitHub Pages in repository settings
+   - Your site will be live at `username.github.io/repo-name`
 
-This project is proprietary. All rights reserved.
+2. **Netlify**
+   - Drag and drop the entire folder to Netlify
+   - Or connect your GitHub repository
+   - Free SSL and custom domain support
 
-## 👥 Contributors
+3. **Vercel**
+   - Import project from GitHub
+   - Automatic deployments on push
+   - Free hosting with great performance
 
-- Development Team
+4. **Cloudflare Pages**
+   - Connect GitHub repository
+   - Fast global CDN
+   - Free SSL included
+
+### Traditional Hosting
+Simply upload all files to your web server via FTP or file manager.
+
+## 💾 Data Storage
+
+- All registrations are stored in browser's `localStorage`
+- Data persists between sessions
+- No backend or database required
+- To clear data: Open browser console and run `localStorage.clear()`
+
+## 🔧 Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## 📝 Tech Stack
+
+- **HTML5** - Semantic markup
+- **CSS3** - Custom properties, Flexbox, Grid, Animations
+- **JavaScript (ES6+)** - Vanilla JS, no frameworks or libraries
+
+## 🤝 Contributing
+
+Feel free to fork this project and customize it for your needs!
+
+## 📄 License
+
+This project is open source and available for personal and commercial use.
+
+---
+
+**Made with ❤️ for Cyberfeast 2026**
