@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrixCanvas"></canvas>
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
                 <img src="symbol3.png" alt="Cyberfeast Logo" class="nav-logo">
-                <span class="brand-text">Cyberfeast</span>
+                <span class="brand-text neo-glow">Cyberfeast</span>
             </div>
             <div class="nav-links">
                 <a href="#home" class="nav-link active">Home</a>
@@ -33,8 +36,8 @@
                 <span>2026 Events Live</span>
             </div>
             <h1 class="hero-title">
-                <span class="gradient-text">Experience</span><br>
-                The Future of Events
+                <span class="gradient-text neo-glow">Experience</span><br>
+                <span class="shiny-text">The Future of Events</span>
             </h1>
             <p class="hero-subtitle">
                 Cyberfeast'26 is a technical event organized by the Cyber Security Department, designed to bring together students who are passionate about technology, security, and innovation. The event features a mix of, technical talks, hands-on challenges, and competitive events that focus on real-world cyber security skills.
@@ -69,7 +72,7 @@
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-line"></span>
-                    Events
+                    <span class="neo-glow">Events</span>
                     <span class="title-line"></span>
                 </h2>
                 <p class="section-subtitle">Discover and register for amazing college events</p>
@@ -86,7 +89,7 @@
     <section id="about" class="about-section">
         <div class="container">
             <div class="about-content">
-                <h2 class="about-title">About Cyberfeast</h2>
+                <h2 class="about-title neo-glow">About Cyberfeast</h2>
                 <p class="about-text">
                     Cyberfeast is your gateway to the most exciting college experiences. We organize
                     a diverse range of events throughout the year, from cutting-edge technology summits
@@ -102,7 +105,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>CYBERFEAST</h3>
+                    <h3 class="neo-glow">CYBERFEAST</h3>
                     <p>Building the future, one event at a time.</p>
                 </div>
                 <div class="footer-links">
@@ -134,41 +137,7 @@
         </div>
     </div>
 
-    <!-- Registration Modal -->
-    <div id="registrationModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-            <div class="registration-form-container">
-                <h2>Event Registration</h2>
-                <p class="form-subtitle">Fill in your details to register</p>
-                <form id="registrationForm">
-                    <input type="hidden" id="eventId" name="eventId">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+91 1234567890">
-                    </div>
-                    <button type="submit" class="submit-btn">Complete Registration</button>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <!-- Success Message -->
-    <div id="successMessage" class="success-message">
-        <div class="success-content">
-            <div class="success-icon">✓</div>
-            <h3>Registration Successful!</h3>
-            <p>You've been registered for the event. Check your email for details.</p>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>

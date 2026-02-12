@@ -5,12 +5,12 @@ const events = [
     {
         id: 1,
         title: 'NYX-CTF',
-        description: 'Capture The Flag competition - the ultimate cybersecurity challenge! Test your hacking skills, exploit vulnerabilities, and solve complex security puzzles. Team event with 2-3 members per team. Win exciting prizes and recognition!',
+        description: 'Capture The Flag competition - the ultimate cybersecurity challenge! Test your hacking skills, exploit vulnerabilities, and solve complex security puzzles. Individual and team categories available. Win exciting prizes and recognition!',
         date: '2026-02-26',
-        time: '9:30 AM',
+        time: '9:00 AM',
         endDate: '2026-02-26',
-        endTime: '12:00 PM',
-        venue: 'IT Lab, MT Block',
+        endTime: '6:00 PM',
+        venue: 'Cyber Security Lab, Block C',
         capacity: 100,
         registered: 45,
         fee: 0,
@@ -22,12 +22,12 @@ const events = [
     {
         id: 2,
         title: 'Among Us',
-        description: 'Real-life social deduction game inspired by the popular video game! Work together to complete tasks while identifying the imposters among you. Team event with 2-3 members per team. Strategic thinking, communication, and deception skills required. Epic prize pool!',
+        description: 'Real-life social deduction game inspired by the popular video game! Work together to complete tasks while identifying the imposters among you. Strategic thinking, communication, and deception skills required. Epic prize pool!',
         date: '2026-02-26',
-        time: '9:30 AM',
+        time: '9:00 AM',
         endDate: '2026-02-26',
-        endTime: '1:00 PM',
-        venue: 'Cyber Lab, MT Block',
+        endTime: '8:00 PM',
+        venue: 'Student Activity Center',
         capacity: 80,
         registered: 32,
         fee: 100,
@@ -39,12 +39,12 @@ const events = [
     {
         id: 3,
         title: 'Hidden Key',
-        description: 'An immersive treasure hunt and puzzle-solving adventure! Decode cryptic clues, solve riddles, and navigate through challenging obstacles to find the hidden key. Team event with 2-3 members per team. Perfect blend of physical and mental challenges.',
+        description: 'An immersive treasure hunt and puzzle-solving adventure! Decode cryptic clues, solve riddles, and navigate through challenging obstacles to find the hidden key. Perfect blend of physical and mental challenges.',
         date: '2026-02-26',
-        time: '12:30 PM',
+        time: '9:00 AM',
         endDate: '2026-02-26',
-        endTime: '2:30 PM',
-        venue: 'Drawing Hall, MT Block',
+        endTime: '5:00 PM',
+        venue: 'Campus-wide Event',
         capacity: 150,
         registered: 67,
         fee: 50,
@@ -56,12 +56,12 @@ const events = [
     {
         id: 4,
         title: 'Mind Spark',
-        description: 'Innovation and ideation competition where brilliant minds collide! Present your groundbreaking ideas, innovative solutions, and creative projects. Team event with 2-3 members per team. Categories include Tech, Social Impact, and Creative Arts. Mentorship and funding opportunities available.',
+        description: 'Innovation and ideation competition where brilliant minds collide! Present your groundbreaking ideas, innovative solutions, and creative projects. Categories include Tech, Social Impact, and Creative Arts. Mentorship and funding opportunities available.',
         date: '2026-02-26',
-        time: '9:30 AM',
+        time: '9:00 AM',
         endDate: '2026-02-26',
-        endTime: '12:00 PM',
-        venue: 'S&H 4101, FT Block',
+        endTime: '6:00 PM',
+        venue: 'Innovation Hub',
         capacity: 120,
         registered: 54,
         fee: 150,
@@ -73,12 +73,12 @@ const events = [
     {
         id: 5,
         title: 'Trace the Truth (TTT)',
-        description: 'Digital forensics and investigation challenge! Analyze evidence, trace digital footprints, and solve cybercrime mysteries. Team event with 2-3 members per team. Real-world scenarios, professional tools, and expert guidance. Perfect for aspiring cybersecurity professionals.',
+        description: 'Digital forensics and investigation challenge! Analyze evidence, trace digital footprints, and solve cybercrime mysteries. Real-world scenarios, professional tools, and expert guidance. Perfect for aspiring cybersecurity professionals.',
         date: '2026-02-26',
-        time: '12:30 PM',
+        time: '9:00 AM',
         endDate: '2026-02-26',
-        endTime: '2:30 PM',
-        venue: 'IT Lab, MT Block',
+        endTime: '4:30 PM',
+        venue: 'Digital Forensics Lab',
         capacity: 60,
         registered: 28,
         fee: 0,
@@ -98,9 +98,100 @@ let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
 // Initialize App
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
+    initMatrixRain();
     renderEvents();
     setupNavigation();
 });
+
+// ========================================
+// Matrix Rain Effect
+// ========================================
+function initMatrixRain() {
+    const canvas = document.getElementById('matrixCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Matrix characters - mix of katakana, numbers, and symbols
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*(){}[]<>?/\\|~`';
+    const charArray = chars.split('');
+    
+    // Colors for the matrix rain
+    const colors = [
+        '#00ff00', // Green
+        '#ff0040', // Red
+        '#00a2ff', // Blue
+        '#ffff00', // Yellow
+        '#bf00ff', // Purple
+        '#00ffff', // Cyan
+    ];
+    
+    const fontSize = 14;
+    const columns = Math.floor(canvas.width / fontSize);
+    
+    // Array to track position of each column
+    const drops = [];
+    const dropColors = [];
+    const speeds = [];
+    
+    for (let i = 0; i < columns; i++) {
+        drops[i] = Math.random() * -100;
+        dropColors[i] = colors[Math.floor(Math.random() * colors.length)];
+        speeds[i] = 0.5 + Math.random() * 1.5;
+    }
+    
+    function draw() {
+        // Semi-transparent black for trail effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.font = `${fontSize}px monospace`;
+        
+        for (let i = 0; i < drops.length; i++) {
+            // Random character
+            const char = charArray[Math.floor(Math.random() * charArray.length)];
+            
+            // Get position
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+            
+            // Occasional bright "head" character
+            if (Math.random() > 0.98) {
+                ctx.fillStyle = '#ffffff';
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = dropColors[i];
+            } else {
+                ctx.fillStyle = dropColors[i];
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = dropColors[i];
+            }
+            
+            ctx.fillText(char, x, y);
+            
+            // Reset shadow
+            ctx.shadowBlur = 0;
+            
+            // Move drop
+            drops[i] += speeds[i];
+            
+            // Reset when reaching bottom
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+                dropColors[i] = colors[Math.floor(Math.random() * colors.length)];
+                speeds[i] = 0.5 + Math.random() * 1.5;
+            }
+        }
+    }
+    
+    // Run animation
+    setInterval(draw, 35);
+}
 
 // ========================================
 // Navigation
@@ -169,8 +260,8 @@ function renderEvents() {
         });
     });
     
-    // Add click listeners to register buttons
-    document.querySelectorAll('.register-btn').forEach((btn, index) => {
+    // Add click listeners to details buttons
+    document.querySelectorAll('.details-btn').forEach((btn, index) => {
         const event = filteredEvents[index];
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -214,8 +305,8 @@ function createEventCard(event) {
                     <div class="event-price ${event.fee === 0 ? 'free' : ''}">
                         ${event.fee === 0 ? 'FREE' : `₹${event.fee}`}
                     </div>
-                    <button class="register-btn" ${isFull || isRegistered ? 'disabled' : ''}>
-                        ${isRegistered ? 'Registered ✓' : isFull ? 'Full' : 'View more details'}
+                    <button class="details-btn">
+                        View Details
                     </button>
                 </div>
             </div>
@@ -261,7 +352,8 @@ function showEventDetail(event) {
                 <span class="info-item-icon">👥</span>
                 <div class="info-item-content">
                     <strong>Capacity</strong>
-                    <span>2-3 members</span>
+                    <span>${event.registered}/${event.capacity} registered</span>
+                    <span>${availableSpots} spots available</span>
                 </div>
             </div>
             
@@ -272,11 +364,16 @@ function showEventDetail(event) {
                     <span class="${event.fee === 0 ? 'free' : ''}">${event.fee === 0 ? 'FREE' : `₹${event.fee}`}</span>
                 </div>
             </div>
+            
+            <div class="info-item">
+                <span class="info-item-icon">📧</span>
+                <div class="info-item-content">
+                    <strong>Contact</strong>
+                    <span>${event.contact}</span>
+                </div>
+            </div>
         </div>
         
-        <button class="modal-register-btn" onclick="showRegistrationForm(${event.id})" ${availableSpots <= 0 || isRegistered ? 'disabled' : ''}>
-            ${isRegistered ? 'Already Registered ✓' : availableSpots <= 0 ? 'Event Full' : 'Register Now'}
-        </button>
     `;
     
     modal.classList.add('active');
