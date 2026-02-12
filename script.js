@@ -5,12 +5,12 @@ const events = [
     {
         id: 1,
         title: 'NYX-CTF',
-        description: 'Capture The Flag competition - the ultimate cybersecurity challenge! Test your hacking skills, exploit vulnerabilities, and solve complex security puzzles. Individual and team categories available. Win exciting prizes and recognition!',
-        date: '2026-03-18',
-        time: '9:00 AM',
-        endDate: '2026-03-19',
-        endTime: '6:00 PM',
-        venue: 'Cyber Security Lab, Block C',
+        description: 'Capture The Flag competition - the ultimate cybersecurity challenge! Test your hacking skills, exploit vulnerabilities, and solve complex security puzzles. Team event with 2-3 members per team. Win exciting prizes and recognition!',
+        date: '2026-02-26',
+        time: '9:30 AM',
+        endDate: '2026-02-26',
+        endTime: '12:00 PM',
+        venue: 'IT Lab, MT Block',
         capacity: 100,
         registered: 45,
         fee: 0,
@@ -22,12 +22,12 @@ const events = [
     {
         id: 2,
         title: 'Among Us',
-        description: 'Real-life social deduction game inspired by the popular video game! Work together to complete tasks while identifying the imposters among you. Strategic thinking, communication, and deception skills required. Epic prize pool!',
-        date: '2026-03-25',
-        time: '2:00 PM',
-        endDate: '2026-03-25',
-        endTime: '8:00 PM',
-        venue: 'Student Activity Center',
+        description: 'Real-life social deduction game inspired by the popular video game! Work together to complete tasks while identifying the imposters among you. Team event with 2-3 members per team. Strategic thinking, communication, and deception skills required. Epic prize pool!',
+        date: '2026-02-26',
+        time: '9:30 AM',
+        endDate: '2026-02-26',
+        endTime: '1:00 PM',
+        venue: 'Cyber Lab, MT Block',
         capacity: 80,
         registered: 32,
         fee: 100,
@@ -39,12 +39,12 @@ const events = [
     {
         id: 3,
         title: 'Hidden Key',
-        description: 'An immersive treasure hunt and puzzle-solving adventure! Decode cryptic clues, solve riddles, and navigate through challenging obstacles to find the hidden key. Perfect blend of physical and mental challenges.',
-        date: '2026-04-08',
-        time: '10:00 AM',
-        endDate: '2026-04-08',
-        endTime: '5:00 PM',
-        venue: 'Campus-wide Event',
+        description: 'An immersive treasure hunt and puzzle-solving adventure! Decode cryptic clues, solve riddles, and navigate through challenging obstacles to find the hidden key. Team event with 2-3 members per team. Perfect blend of physical and mental challenges.',
+        date: '2026-02-26',
+        time: '12:30 PM',
+        endDate: '2026-02-26',
+        endTime: '2:30 PM',
+        venue: 'Drawing Hall, MT Block',
         capacity: 150,
         registered: 67,
         fee: 50,
@@ -56,12 +56,12 @@ const events = [
     {
         id: 4,
         title: 'Mind Spark',
-        description: 'Innovation and ideation competition where brilliant minds collide! Present your groundbreaking ideas, innovative solutions, and creative projects. Categories include Tech, Social Impact, and Creative Arts. Mentorship and funding opportunities available.',
-        date: '2026-04-15',
-        time: '11:00 AM',
-        endDate: '2026-04-15',
-        endTime: '6:00 PM',
-        venue: 'Innovation Hub',
+        description: 'Innovation and ideation competition where brilliant minds collide! Present your groundbreaking ideas, innovative solutions, and creative projects. Team event with 2-3 members per team. Categories include Tech, Social Impact, and Creative Arts. Mentorship and funding opportunities available.',
+        date: '2026-02-26',
+        time: '9:30 AM',
+        endDate: '2026-02-26',
+        endTime: '12:00 PM',
+        venue: 'S&H 4101, FT Block',
         capacity: 120,
         registered: 54,
         fee: 150,
@@ -73,12 +73,12 @@ const events = [
     {
         id: 5,
         title: 'Trace the Truth (TTT)',
-        description: 'Digital forensics and investigation challenge! Analyze evidence, trace digital footprints, and solve cybercrime mysteries. Real-world scenarios, professional tools, and expert guidance. Perfect for aspiring cybersecurity professionals.',
-        date: '2026-04-22',
-        time: '9:30 AM',
-        endDate: '2026-04-22',
-        endTime: '4:30 PM',
-        venue: 'Digital Forensics Lab',
+        description: 'Digital forensics and investigation challenge! Analyze evidence, trace digital footprints, and solve cybercrime mysteries. Team event with 2-3 members per team. Real-world scenarios, professional tools, and expert guidance. Perfect for aspiring cybersecurity professionals.',
+        date: '2026-02-26',
+        time: '12:30 PM',
+        endDate: '2026-02-26',
+        endTime: '2:30 PM',
+        venue: 'IT Lab, MT Block',
         capacity: 60,
         registered: 28,
         fee: 0,
@@ -261,8 +261,7 @@ function showEventDetail(event) {
                 <span class="info-item-icon">👥</span>
                 <div class="info-item-content">
                     <strong>Capacity</strong>
-                    <span>${event.registered}/${event.capacity} registered</span>
-                    <span>${availableSpots} spots available</span>
+                    <span>2-3 members</span>
                 </div>
             </div>
             
@@ -271,14 +270,6 @@ function showEventDetail(event) {
                 <div class="info-item-content">
                     <strong>Registration Fee</strong>
                     <span class="${event.fee === 0 ? 'free' : ''}">${event.fee === 0 ? 'FREE' : `₹${event.fee}`}</span>
-                </div>
-            </div>
-            
-            <div class="info-item">
-                <span class="info-item-icon">📧</span>
-                <div class="info-item-content">
-                    <strong>Contact</strong>
-                    <span>${event.contact}</span>
                 </div>
             </div>
         </div>
