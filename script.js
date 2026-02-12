@@ -101,7 +101,83 @@ document.addEventListener('DOMContentLoaded', () => {
     initMatrixRain();
     renderEvents();
     setupNavigation();
+    initMobileMenu();
+    initScrollReveal();
 });
+
+// ========================================
+// Mobile Menu
+// ========================================
+function initMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const navLinkItems = document.querySelectorAll('.nav-link');
+
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    }
+}
+
+// ========================================
+// Scroll Reveal Animations
+// ========================================
+function initScrollReveal() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements with reveal classes
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    revealElements.forEach(el => observer.observe(el));
+
+    // Also observe event cards when they're rendered
+    const eventsGrid = document.getElementById('eventsGrid');
+    if (eventsGrid) {
+        const gridObserver = new MutationObserver(() => {
+            const eventCards = eventsGrid.querySelectorAll('.event-card');
+            eventCards.forEach(card => {
+                card.classList.add('reveal');
+                observer.observe(card);
+            });
+        });
+        gridObserver.observe(eventsGrid, { childList: true });
+    }
+
+    // Add reveal class to sections
+    document.querySelectorAll('.section-header, .about-content, .footer-content').forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
+    });
+}
 
 // ========================================
 // Matrix Rain Effect

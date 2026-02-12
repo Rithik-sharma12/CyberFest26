@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberfeast - Register for College Events</title>
+    <title>Events - Cyberfeast'26</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,62 +26,28 @@
                 <span></span>
             </div>
             <div class="nav-links" id="navLinks">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="events.html" class="nav-link">Events</a>
-                <a href="#about" class="nav-link">About</a>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="index.html#about" class="nav-link">About</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="container hero-content">            <div class="hero-logo">
-                <img src="symbol3.png" alt="Cyberfeast Logo" class="hero-logo-img">
-            </div>
-                        <div class="hero-badge">
-                <span class="pulse-dot"></span>
-                <span>2026 Events Live</span>
-            </div>
-            <h1 class="hero-title">
-                <span class="gradient-text neo-glow">Experience</span><br>
-                <span class="shiny-text">The Future of Events</span>
-            </h1>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Upcoming Events</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">200+</div>
-                    <div class="stat-label">Registrations</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Active</div>
-                </div>
-            </div>
-            <a href="events.html" class="cta-button">
-                Explore Events
-                <span class="arrow">→</span>
-            </a>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about-section">
+    <!-- Events Section -->
+    <section id="events" class="events-section events-page">
         <div class="container">
-            <div class="about-content">
-                <h2 class="about-title neo-glow">About Cyberfeast</h2>
-                <p class="about-text">
-                    Cyberfeast is your gateway to the most exciting college experiences. We organize
-                    a diverse range of events throughout the year, from cutting-edge technology summits
-                    to vibrant cultural festivals. Our mission is to provide students with opportunities
-                    to learn, network, and showcase their talents.
-                </p>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="title-line"></span>
+                    <span class="neo-glow">Events</span>
+                    <span class="title-line"></span>
+                </h2>
+                <p class="section-subtitle">Discover and register for amazing college events</p>
+            </div>
+
+            <!-- Events Grid -->
+            <div id="eventsGrid" class="events-grid">
+                <!-- Events will be loaded dynamically by JavaScript -->
             </div>
         </div>
     </section>
@@ -99,7 +65,7 @@
                         <h4>Quick Links</h4>
                         <a href="index.html">Home</a>
                         <a href="events.html">Events</a>
-                        <a href="#about">About</a>
+                        <a href="index.html#about">About</a>
                     </div>
                     <div class="footer-column">
                         <h4>Contact</h4>
@@ -122,8 +88,6 @@
             </div>
         </div>
     </div>
-
-
 
     <script src="script.js"></script>
 </body>
