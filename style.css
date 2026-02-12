@@ -2,35 +2,35 @@
    CSS Variables & Reset
    ======================================== */
 :root {
-    /* Primary Colors - Ocean Blue Gradient */
-    --primary: #5483B3;
-    --primary-dark: #052659;
-    --primary-light: #7DA0CA;
-    --secondary: #7DA0CA;
-    --accent: #C1E8FF;
+    /* Primary Colors - Vibrant Cyan Blue */
+    --primary: #00D4FF;
+    --primary-dark: #0066CC;
+    --primary-light: #66EEFF;
+    --secondary: #00FFCC;
+    --accent: #FFFFFF;
     
     /* Background Colors - Deep Ocean Theme */
-    --dark: #021024;
-    --dark-light: #052659;
-    --dark-lighter: #0A3A7A;
+    --dark: #020B18;
+    --dark-light: #051530;
+    --dark-lighter: #0A2A5A;
     
     /* Text Colors */
     --text: #FFFFFF;
-    --text-muted: #C1E8FF;
-    --text-secondary: #7DA0CA;
+    --text-muted: #B0E0FF;
+    --text-secondary: #66EEFF;
     
     /* Effects */
-    --border: rgba(84, 131, 179, 0.3);
-    --glow: rgba(84, 131, 179, 0.6);
-    --glow-secondary: rgba(125, 160, 202, 0.5);
+    --border: rgba(0, 212, 255, 0.4);
+    --glow: rgba(0, 212, 255, 0.8);
+    --glow-secondary: rgba(0, 255, 204, 0.6);
     
     /* Neon Accent Colors */
-    --neon-red: #FF4D6D;
-    --neon-blue: #5483B3;
-    --neon-yellow: #FFE600;
-    --neon-purple: #7DA0CA;
-    --neon-green: #82D173;
-    --neon-pink: #C1E8FF;
+    --neon-red: #FF3366;
+    --neon-blue: #00D4FF;
+    --neon-yellow: #FFFF00;
+    --neon-purple: #AA66FF;
+    --neon-green: #00FF88;
+    --neon-pink: #FF66CC;
 }
 
 * {
@@ -70,27 +70,37 @@ body {
    ======================================== */
 .neo-glow {
     text-shadow: 
-        0 0 5px var(--primary),
+        /* 3D Depth layers */
+        1px 1px 0 rgba(0, 100, 150, 0.8),
+        2px 2px 0 rgba(0, 80, 120, 0.6),
+        3px 3px 0 rgba(0, 60, 100, 0.4),
+        /* Bright glow */
         0 0 10px var(--primary),
         0 0 20px var(--primary),
-        0 0 40px var(--primary-light),
-        0 0 80px var(--secondary);
+        0 0 40px var(--primary),
+        0 0 60px var(--secondary),
+        0 0 100px var(--secondary);
     animation: neoFlicker 4s infinite alternate;
 }
 
 @keyframes neoFlicker {
     0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
         text-shadow: 
-            0 0 5px var(--primary),
+            1px 1px 0 rgba(0, 100, 150, 0.8),
+            2px 2px 0 rgba(0, 80, 120, 0.6),
+            3px 3px 0 rgba(0, 60, 100, 0.4),
             0 0 10px var(--primary),
             0 0 20px var(--primary),
-            0 0 40px var(--primary-light),
-            0 0 80px var(--secondary);
+            0 0 40px var(--primary),
+            0 0 60px var(--secondary),
+            0 0 100px var(--secondary);
     }
     20%, 24%, 55% {
         text-shadow: 
-            0 0 2px var(--primary),
-            0 0 5px var(--primary);
+            1px 1px 0 rgba(0, 100, 150, 0.5),
+            2px 2px 0 rgba(0, 80, 120, 0.3),
+            0 0 5px var(--primary),
+            0 0 10px var(--primary);
     }
 }
 
@@ -180,7 +190,7 @@ body::before {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(2, 16, 36, 0.95);
+    background: rgba(2, 11, 24, 0.95);
     backdrop-filter: blur(15px);
     border-bottom: 2px solid var(--primary);
     box-shadow: 0 0 30px var(--glow);
@@ -223,9 +233,15 @@ body::before {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.8rem;
     font-weight: 800;
-    color: var(--primary);
+    color: #00D4FF;
     letter-spacing: 4px;
     text-transform: uppercase;
+    text-shadow:
+        1px 1px 0 #006688,
+        2px 2px 0 #004455,
+        3px 3px 5px rgba(0, 0, 0, 0.5),
+        0 0 15px rgba(0, 212, 255, 0.8),
+        0 0 30px rgba(0, 212, 255, 0.5);
 }
 
 .brand-subtext {
@@ -360,22 +376,22 @@ body::before {
     align-items: center;
     gap: 0.5rem;
     padding: 0.4rem 1.2rem;
-    background: rgba(84, 131, 179, 0.15);
+    background: rgba(0, 212, 255, 0.15);
     border: 2px solid var(--primary);
     border-radius: 50px;
     font-size: 0.85rem;
     color: var(--primary);
     margin-bottom: 1rem;
-    box-shadow: 0 0 20px var(--glow), inset 0 0 20px rgba(84, 131, 179, 0.1);
+    box-shadow: 0 0 20px var(--glow), inset 0 0 20px rgba(0, 212, 255, 0.1);
     animation: badgePulse 2s ease-in-out infinite;
 }
 
 @keyframes badgePulse {
     0%, 100% {
-        box-shadow: 0 0 20px var(--glow), inset 0 0 20px rgba(84, 131, 179, 0.1);
+        box-shadow: 0 0 20px var(--glow), inset 0 0 20px rgba(0, 212, 255, 0.1);
     }
     50% {
-        box-shadow: 0 0 40px var(--glow), inset 0 0 30px rgba(84, 131, 179, 0.2);
+        box-shadow: 0 0 40px var(--glow), inset 0 0 30px rgba(0, 212, 255, 0.2);
     }
 }
 
@@ -414,10 +430,11 @@ body::before {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--neon-pink) 100%);
+    background: linear-gradient(135deg, #00D4FF 0%, #00FFCC 35%, #FFFFFF 50%, #FF66CC 75%, #00D4FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
 }
 
 .hero-subtitle {
@@ -425,7 +442,7 @@ body::before {
     color: var(--text-muted);
     max-width: 700px;
     margin: 0 auto 1.5rem;
-    text-shadow: 0 0 10px rgba(84, 131, 179, 0.3);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     line-height: 1.6;
 }
 
@@ -445,17 +462,31 @@ body::before {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary);
-    text-shadow: 0 0 15px var(--glow), 0 0 30px var(--glow);
+    color: #00FFCC;
+    text-shadow: 
+        1px 1px 0 #007755,
+        2px 2px 0 #005533,
+        0 0 15px rgba(0, 255, 204, 0.8),
+        0 0 30px rgba(0, 255, 204, 0.5),
+        0 0 50px rgba(0, 255, 204, 0.3);
     animation: numberGlow 2s ease-in-out infinite;
 }
 
 @keyframes numberGlow {
     0%, 100% {
-        text-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow);
+        text-shadow: 
+            1px 1px 0 #007755,
+            2px 2px 0 #005533,
+            0 0 15px rgba(0, 255, 204, 0.8),
+            0 0 30px rgba(0, 255, 204, 0.5);
     }
     50% {
-        text-shadow: 0 0 30px var(--secondary), 0 0 60px var(--secondary);
+        text-shadow: 
+            1px 1px 0 #007755,
+            2px 2px 0 #005533,
+            0 0 20px rgba(0, 212, 255, 1),
+            0 0 40px rgba(0, 212, 255, 0.8),
+            0 0 60px rgba(0, 212, 255, 0.5);
     }
 }
 
@@ -478,7 +509,7 @@ body::before {
     font-size: 0.85rem;
     border-radius: 50px;
     border: 2px solid var(--primary);
-    box-shadow: 0 0 20px var(--glow), inset 0 0 20px rgba(84, 131, 179, 0.1);
+    box-shadow: 0 0 20px var(--glow), inset 0 0 20px rgba(0, 212, 255, 0.1);
     transition: all 0.3s ease;
     margin-top: 0;
     text-transform: uppercase;
@@ -627,6 +658,12 @@ body::before {
     justify-content: center;
     gap: 1rem;
     margin-bottom: 1rem;
+    color: #00D4FF;
+    text-shadow:
+        1px 1px 0 #006688,
+        2px 2px 0 #004455,
+        0 0 15px rgba(0, 212, 255, 0.8),
+        0 0 30px rgba(0, 212, 255, 0.5);
 }
 
 .title-line {
@@ -700,7 +737,7 @@ body::before {
 .event-card:hover {
     transform: translateY(-10px) scale(1.02);
     box-shadow: 
-        0 0 30px rgba(84, 131, 179, 0.3),
+        0 0 30px rgba(0, 212, 255, 0.3),
         0 20px 60px rgba(0, 0, 0, 0.5);
     border-color: var(--primary);
 }
@@ -725,7 +762,7 @@ body::before {
 .event-category {
     display: inline-block;
     padding: 0.3rem 1rem;
-    background: rgba(84, 131, 179, 0.15);
+    background: rgba(0, 212, 255, 0.15);
     color: var(--primary);
     font-size: 0.75rem;
     font-weight: 700;
@@ -734,7 +771,7 @@ body::before {
     letter-spacing: 2px;
     margin-bottom: 1rem;
     border: 1px solid var(--primary);
-    box-shadow: 0 0 10px rgba(84, 131, 179, 0.3);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .event-title {
@@ -742,8 +779,11 @@ body::before {
     font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: var(--text);
-    text-shadow: 0 0 5px rgba(84, 131, 179, 0.3);
+    color: #00D4FF;
+    text-shadow:
+        1px 1px 0 #004466,
+        0 0 10px rgba(0, 212, 255, 0.6),
+        0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 .event-description {
@@ -877,12 +917,13 @@ body::before {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--neon-pink) 100%);
+    background: linear-gradient(135deg, #00D4FF 0%, #00FFCC 40%, #FFFFFF 60%, #FF66CC 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
     letter-spacing: 3px;
+    filter: drop-shadow(2px 2px 0 rgba(0, 100, 150, 0.6)) drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
 }
 
 .about-text {
@@ -890,7 +931,7 @@ body::before {
     color: var(--text-muted);
     margin-bottom: 3rem;
     line-height: 2;
-    text-shadow: 0 0 5px rgba(84, 131, 179, 0.2);
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.2);
 }
 
 .about-features {
@@ -937,7 +978,7 @@ body::before {
     background: var(--dark);
     padding: 3rem 0 1.5rem;
     border-top: 2px solid var(--primary);
-    box-shadow: 0 -10px 40px rgba(84, 131, 179, 0.1);
+    box-shadow: 0 -10px 40px rgba(0, 212, 255, 0.1);
 }
 
 .footer-content {
@@ -1027,9 +1068,9 @@ body::before {
     position: relative;
     padding: 2rem;
     box-shadow: 
-        0 0 50px rgba(84, 131, 179, 0.3),
+        0 0 50px rgba(0, 212, 255, 0.3),
         0 20px 60px rgba(0, 0, 0, 0.5),
-        inset 0 0 30px rgba(84, 131, 179, 0.05);
+        inset 0 0 30px rgba(0, 212, 255, 0.05);
     animation: modalSlideIn 0.4s ease;
 }
 
