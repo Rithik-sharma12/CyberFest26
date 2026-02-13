@@ -922,6 +922,7 @@ body::before {
     padding: 6rem 0;
     background: var(--dark);
     position: relative;
+    overflow: hidden;
 }
 
 .about-section::before {
@@ -932,12 +933,28 @@ body::before {
     right: 0;
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    z-index: 2;
+}
+
+.about-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('images/cyber_hands.png') center center / cover no-repeat;
+    filter: blur(3px);
+    opacity: 0.25;
+    z-index: 0;
 }
 
 .about-content {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .about-title {
