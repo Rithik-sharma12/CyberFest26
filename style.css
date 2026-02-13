@@ -1075,6 +1075,8 @@ body::before {
     border-radius: 20px;
     max-width: 600px;
     width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
     position: relative;
     padding: 2rem;
     box-shadow: 
@@ -1184,6 +1186,31 @@ body::before {
 .modal-register-btn:hover {
     background: var(--primary-dark);
     box-shadow: 0 5px 30px var(--glow);
+}
+
+.modal-btn-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modal-cancel-btn {
+    flex: 1;
+    padding: 1rem;
+    background: transparent;
+    color: var(--text-muted);
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-cancel-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(0, 212, 255, 0.1);
 }
 
 /* Registration Form */

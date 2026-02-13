@@ -11,9 +11,7 @@ const events = [
         endDate: '2026-02-26',
         endTime: '6:00 PM',
         venue: 'Cyber Security Lab, Block C',
-        capacity: 100,
-        registered: 45,
-        fee: 0,
+        fee: 250,
         category: 'tech',
         image: '',
         contact: 'nyxctf@cyberfest26.edu',
@@ -28,9 +26,7 @@ const events = [
         endDate: '2026-02-26',
         endTime: '8:00 PM',
         venue: 'Student Activity Center',
-        capacity: 80,
-        registered: 32,
-        fee: 100,
+        fee: 250,
         category: 'cultural',
         image: '',
         contact: 'amongus@cyberfest26.edu',
@@ -45,9 +41,7 @@ const events = [
         endDate: '2026-02-26',
         endTime: '5:00 PM',
         venue: 'Campus-wide Event',
-        capacity: 150,
-        registered: 67,
-        fee: 50,
+        fee: 250,
         category: 'tech',
         image: '',
         contact: 'hiddenkey@cyberfest26.edu',
@@ -62,9 +56,7 @@ const events = [
         endDate: '2026-02-26',
         endTime: '6:00 PM',
         venue: 'Innovation Hub',
-        capacity: 120,
-        registered: 54,
-        fee: 150,
+        fee: 0,
         category: 'business',
         image: '',
         contact: 'mindspark@cyberfest26.edu',
@@ -79,9 +71,7 @@ const events = [
         endDate: '2026-02-26',
         endTime: '4:30 PM',
         venue: 'Digital Forensics Lab',
-        capacity: 60,
-        registered: 28,
-        fee: 0,
+        fee: 250,
         category: 'tech',
         image: '',
         contact: 'ttt@cyberfest26.edu',
@@ -393,8 +383,6 @@ function renderEvents() {
 // Create Event Card
 // ========================================
 function createEventCard(event) {
-    const availableSpots = event.capacity - event.registered;
-    const isFull = availableSpots <= 0;
     const isRegistered = registrations.some(reg => reg.eventId === event.id);
     
     return `
@@ -413,10 +401,6 @@ function createEventCard(event) {
                     <div class="detail-row">
                         <span class="detail-icon">📍</span>
                         <span>${event.venue}</span>
-                    </div>
-                    <div class="detail-row">
-                        <span class="detail-icon">👥</span>
-                        <span>${availableSpots} spots available</span>
                     </div>
                 </div>
                 
@@ -439,7 +423,6 @@ function createEventCard(event) {
 function showEventDetail(event) {
     const modal = document.getElementById('eventModal');
     const modalBody = document.getElementById('modalBody');
-    const availableSpots = event.capacity - event.registered;
     const isRegistered = registrations.some(reg => reg.eventId === event.id);
     
     modalBody.innerHTML = `
@@ -468,16 +451,7 @@ function showEventDetail(event) {
             </div>
             
             <div class="info-item">
-                <span class="info-item-icon">👥</span>
-                <div class="info-item-content">
-                    <strong>Capacity</strong>
-                    <span>${event.registered}/${event.capacity} registered</span>
-                    <span>${availableSpots} spots available</span>
-                </div>
-            </div>
-            
-            <div class="info-item">
-                <span class="info-item-icon">💰</span>
+                <span class="info-item-icon"></span>
                 <div class="info-item-content">
                     <strong>Registration Fee</strong>
                     <span class="${event.fee === 0 ? 'free' : ''}">${event.fee === 0 ? 'FREE' : `₹${event.fee}`}</span>
@@ -493,6 +467,9 @@ function showEventDetail(event) {
             </div>
         </div>
         
+        <div class="modal-btn-group">
+            <button class="modal-cancel-btn" onclick="closeEventModal()">Cancel</button>
+        </div>
     `;
     
     modal.classList.add('active');
@@ -591,6 +568,12 @@ function setupModalClose(modal) {
             modal.classList.remove('active');
         }
     };
+}
+
+// Close Event Modal
+function closeEventModal() {
+    const modal = document.getElementById('eventModal');
+    modal.classList.remove('active');
 }
 
 // ========================================
