@@ -1,4 +1,4 @@
-// ========================================
+﻿// ========================================
 // Event Data
 // ========================================
 const events = [
@@ -200,8 +200,8 @@ function initMatrixRain() {
     
     // Matrix characters - simplified for mobile
     const chars = isMobile 
-        ? '01アウカキサシタチナニハヒマミヤユラリ@#$%'
-        : 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*(){}[]<>?/\\|~`';
+        ? '01ã‚¢ã‚¦ã‚«ã‚­ã‚µã‚·ã‚¿ãƒãƒŠãƒ‹ãƒãƒ’ãƒžãƒŸãƒ¤ãƒ¦ãƒ©ãƒª@#$%'
+        : 'ã‚¢ã‚¤ã‚¦ã‚¨ã‚ªã‚«ã‚­ã‚¯ã‚±ã‚³ã‚µã‚·ã‚¹ã‚»ã‚½ã‚¿ãƒãƒ„ãƒ†ãƒˆãƒŠãƒ‹ãƒŒãƒãƒŽãƒãƒ’ãƒ•ãƒ˜ãƒ›ãƒžãƒŸãƒ ãƒ¡ãƒ¢ãƒ¤ãƒ¦ãƒ¨ãƒ©ãƒªãƒ«ãƒ¬ãƒ­ãƒ¯ãƒ²ãƒ³0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*(){}[]<>?/\\|~`';
     const charArray = chars.split('');
     
     // Colors for the matrix rain
@@ -408,19 +408,16 @@ function createEventCard(event) {
                 
                 <div class="event-details">
                     <div class="detail-row">
-                        <span class="detail-icon">📅</span>
+                        <span class="detail-icon">ðŸ“…</span>
                         <span>${formatDate(event.date)} at ${event.time}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-icon">📍</span>
+                        <span class="detail-icon">ðŸ“</span>
                         <span>${event.venue}</span>
                     </div>
                 </div>
                 
                 <div class="event-footer">
-                    <div class="event-price ${event.perPerson === 0 ? 'free' : ''}">
-                        ${event.perPerson === 0 ? 'FREE' : `₹${event.perPerson}/person`}
-                    </div>
                     <button class="details-btn">
                         View Details
                     </button>
@@ -467,22 +464,6 @@ function showEventDetail(event) {
                 <div class="info-item-content">
                     <strong>Venue</strong>
                     <span>${event.venue}</span>
-                </div>
-            </div>
-            
-            <div class="info-item">
-                <span class="info-item-icon">�</span>
-                <div class="info-item-content">
-                    <strong>Date</strong>
-                    <span>${new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                </div>
-            </div>
-            
-            <div class="info-item">
-                <span class="info-item-icon">💰</span>
-                <div class="info-item-content">
-                    <strong>Fee</strong>
-                    <span class="${event.perPerson === 0 ? 'free' : ''}">${event.perPerson === 0 ? 'FREE' : `Per Person: ₹${event.perPerson} | Team: ₹${event.team}`}</span>
                 </div>
             </div>
         </div>
@@ -609,3 +590,4 @@ function formatDate(dateString) {
 // Make showRegistrationForm globally available
 // ========================================
 window.showRegistrationForm = showRegistrationForm;
+
