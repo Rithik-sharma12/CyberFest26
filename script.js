@@ -14,7 +14,7 @@ const events = [
         perPerson: 100,
         team: 250,
         category: 'tech',
-        image: '',
+        image: 'images/ctf-banner.png',
         contact: 'nyxctf@cyberfest26.edu',
         isOpen: true
     },
@@ -400,7 +400,7 @@ function createEventCard(event) {
     
     return `
         <div class="event-card" data-category="${event.category}">
-            <img src="${event.image}" alt="${event.title}" class="event-image">
+            ${event.image ? `<img src="${event.image}" alt="${event.title}" class="event-image">` : ''}
             <div class="event-content">
                 <span class="event-category">TECH</span>
                 <h3 class="event-title">${event.title}</h3>
