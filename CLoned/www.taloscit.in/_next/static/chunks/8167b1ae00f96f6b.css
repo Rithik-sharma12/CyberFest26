@@ -1,0 +1,27 @@
+.ScrollVelocity-module__QpPyyG__parallax {
+    position: relative;
+    overflow: hidden
+}
+
+.ScrollVelocity-module__QpPyyG__scroller {
+    white-space: nowrap;
+    text-align: center;
+    font-family: var(--font-press-start-2p), sans-serif;
+    letter-spacing: -.02em;
+    color: red;
+    filter: drop-shadow(0 5px 5px #ac0000);
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex
+}
+
+.ScrollVelocity-module__QpPyyG__scroller span {
+    flex-shrink: 0
+}
+
+@media (min-width:768px) {
+    .ScrollVelocity-module__QpPyyG__scroller {
+        font-size: 3rem;
+        line-height: 3rem
+    }
+}
