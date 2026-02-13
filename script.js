@@ -16,7 +16,7 @@ const events = [
         fee: 0,
         category: 'tech',
         image: '',
-        contact: 'nyxctf@cyberfeast.edu',
+        contact: 'nyxctf@cyberfest26.edu',
         isOpen: true
     },
     {
@@ -33,7 +33,7 @@ const events = [
         fee: 100,
         category: 'cultural',
         image: '',
-        contact: 'amongus@cyberfeast.edu',
+        contact: 'amongus@cyberfest26.edu',
         isOpen: true
     },
     {
@@ -50,7 +50,7 @@ const events = [
         fee: 50,
         category: 'tech',
         image: '',
-        contact: 'hiddenkey@cyberfeast.edu',
+        contact: 'hiddenkey@cyberfest26.edu',
         isOpen: true
     },
     {
@@ -67,7 +67,7 @@ const events = [
         fee: 150,
         category: 'business',
         image: '',
-        contact: 'mindspark@cyberfeast.edu',
+        contact: 'mindspark@cyberfest26.edu',
         isOpen: true
     },
     {
@@ -84,7 +84,7 @@ const events = [
         fee: 0,
         category: 'tech',
         image: '',
-        contact: 'ttt@cyberfeast.edu',
+        contact: 'ttt@cyberfest26.edu',
         isOpen: true
     }
 ];
@@ -180,11 +180,14 @@ function initScrollReveal() {
 }
 
 // ========================================
-// Matrix Rain Effect
+// Matrix Rain Effect (Performance Optimized)
 // ========================================
 function initMatrixRain() {
     const canvas = document.getElementById('matrixCanvas');
     const ctx = canvas.getContext('2d');
+    
+    // Detect mobile for performance optimization
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
     
     // Set canvas size
     function resizeCanvas() {
@@ -192,10 +195,18 @@ function initMatrixRain() {
         canvas.height = window.innerHeight;
     }
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
     
-    // Matrix characters - mix of katakana, numbers, and symbols
-    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*(){}[]<>?/\\|~`';
+    // Debounced resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(resizeCanvas, 150);
+    });
+    
+    // Matrix characters - simplified for mobile
+    const chars = isMobile 
+        ? '01アウカキサシタチナニハヒマミヤユラリ@#$%'
+        : 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%^&*(){}[]<>?/\\|~`';
     const charArray = chars.split('');
     
     // Colors for the matrix rain
@@ -208,8 +219,10 @@ function initMatrixRain() {
         '#00ffff', // Cyan
     ];
     
-    const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
+    // Adjust density for mobile
+    const fontSize = isMobile ? 16 : 14;
+    const columnSpacing = isMobile ? 3 : 1; // Skip columns on mobile
+    const columns = Math.floor(canvas.width / fontSize / columnSpacing);
     
     // Array to track position of each column
     const drops = [];
@@ -222,36 +235,56 @@ function initMatrixRain() {
         speeds[i] = 0.5 + Math.random() * 1.5;
     }
     
-    function draw() {
+    // Frame rate control
+    const targetFPS = isMobile ? 20 : 30;
+    const frameInterval = 1000 / targetFPS;
+    let lastFrameTime = 0;
+    let animationId;
+    
+    function draw(currentTime) {
+        animationId = requestAnimationFrame(draw);
+        
+        // Throttle frame rate
+        const elapsed = currentTime - lastFrameTime;
+        if (elapsed < frameInterval) return;
+        lastFrameTime = currentTime - (elapsed % frameInterval);
+        
         // Semi-transparent black for trail effect
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+        ctx.fillStyle = isMobile ? 'rgba(0, 0, 0, 0.08)' : 'rgba(0, 0, 0, 0.03)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         
         ctx.font = `${fontSize}px monospace`;
+        
+        // Disable shadow on mobile for performance
+        const useShadow = !isMobile;
         
         for (let i = 0; i < drops.length; i++) {
             // Random character
             const char = charArray[Math.floor(Math.random() * charArray.length)];
             
             // Get position
-            const x = i * fontSize;
+            const x = i * fontSize * columnSpacing;
             const y = drops[i] * fontSize;
             
             // Occasional bright "head" character
             if (Math.random() > 0.98) {
                 ctx.fillStyle = '#ffffff';
-                ctx.shadowBlur = 20;
-                ctx.shadowColor = dropColors[i];
+                if (useShadow) {
+                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = dropColors[i];
+                }
             } else {
                 ctx.fillStyle = dropColors[i];
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = dropColors[i];
+                if (useShadow) {
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = dropColors[i];
+                }
             }
             
             ctx.fillText(char, x, y);
             
             // Reset shadow
-            ctx.shadowBlur = 0;
+            if (useShadow) ctx.shadowBlur = 0;
             
             // Move drop
             drops[i] += speeds[i];
@@ -265,8 +298,18 @@ function initMatrixRain() {
         }
     }
     
-    // Run animation
-    setInterval(draw, 35);
+    // Start animation with requestAnimationFrame
+    animationId = requestAnimationFrame(draw);
+    
+    // Pause animation when tab is not visible
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            cancelAnimationFrame(animationId);
+        } else {
+            lastFrameTime = 0;
+            animationId = requestAnimationFrame(draw);
+        }
+    });
 }
 
 // ========================================

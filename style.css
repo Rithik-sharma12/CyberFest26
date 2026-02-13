@@ -63,6 +63,7 @@ body {
     z-index: 0;
     pointer-events: none;
     opacity: 0.7;
+    will-change: contents;
 }
 
 /* ========================================
@@ -162,7 +163,8 @@ body::before {
         transparent 1px,
         transparent 2px
     );
-    animation: scanlines 0.1s linear infinite;
+    animation: scanlines 0.5s linear infinite;
+    will-change: background-position;
 }
 
 @keyframes scanlines {
@@ -917,13 +919,21 @@ body::before {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #00D4FF 0%, #00FFCC 40%, #FFFFFF 60%, #FF66CC 100%);
+    background: linear-gradient(135deg, #00D4FF 0%, #00FFCC 50%, #00D4FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
     letter-spacing: 3px;
-    filter: drop-shadow(2px 2px 0 rgba(0, 100, 150, 0.6)) drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+    filter: drop-shadow(1px 1px 0 rgba(0, 100, 150, 0.5)) drop-shadow(0 0 6px rgba(0, 212, 255, 0.4));
+}
+
+.about-title .year-highlight {
+    background: linear-gradient(135deg, #FF66CC 0%, #FFFF00 50%, #FF66CC 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 8px rgba(255, 102, 204, 0.6));
 }
 
 .about-text {
@@ -1621,5 +1631,85 @@ body::before {
 
     .scroll-indicator {
         display: none;
+    }
+}
+
+/* ========================================
+   Performance Optimizations for Mobile
+   ======================================== */
+@media (max-width: 768px) {
+    /* Disable expensive scanlines animation */
+    body::before {
+        display: none !important;
+    }
+    
+    /* Reduce matrix canvas opacity */
+    #matrixCanvas {
+        opacity: 0.4;
+    }
+    
+    /* Simplify navbar backdrop blur */
+    .navbar {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 0 15px var(--glow);
+    }
+    
+    /* Simplify neo-glow effects */
+    .neo-glow {
+        text-shadow: 
+            1px 1px 0 rgba(0, 100, 150, 0.6),
+            0 0 8px var(--primary),
+            0 0 15px var(--primary);
+        animation: none;
+    }
+    
+    /* Simplified flicker animation - removed for performance */
+    .brand-text {
+        animation: none;
+    }
+    
+    /* Reduce modal backdrop blur */
+    .modal {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+    
+    /* Reduce nav-links backdrop effects */
+    .nav-links {
+        box-shadow: -5px 0 25px var(--glow);
+    }
+    
+    /* Simplify event card effects */
+    .event-card {
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    }
+    
+    .event-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    }
+    
+    /* Simplify about-title glow */
+    .about-title {
+        filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.3));
+    }
+    
+    /* Reduce footer effects */
+    .footer {
+        box-shadow: 0 -5px 20px rgba(0, 212, 255, 0.2);
+    }
+}
+
+/* Extra performance for very small devices */
+@media (max-width: 480px) {
+    #matrixCanvas {
+        opacity: 0.3;
+    }
+    
+    .neo-glow {
+        text-shadow: 
+            0 0 5px var(--primary),
+            0 0 10px var(--primary);
     }
 }

@@ -1,4 +1,4 @@
-# Cyberfeast - Static Website
+# CYBERFEST'26 - Static Website
 
 A modern, cyberpunk-themed event registration platform built with pure HTML, CSS, and JavaScript.
 
@@ -181,4 +181,4 @@ This project is open source and available for personal and commercial use.
 
 ---
 
-**Made with ❤️ for Cyberfeast 2026**
+**Made with ❤️ for CYBERFEST'26**
