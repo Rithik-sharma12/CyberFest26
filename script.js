@@ -429,15 +429,22 @@ function showEventDetail(event) {
         <div class="event-detail-header">
             <span class="event-category">TECH</span>
             <h2 class="event-detail-title">${event.title}</h2>
-            <p class="event-detail-description">${event.description}</p>
+            <p class="event-detail-description">${event.description.substring(0, 120)}...</p>
         </div>
         
         <div class="event-detail-info">
             <div class="info-item">
                 <span class="info-item-icon">📅</span>
                 <div class="info-item-content">
-                    <strong>Date & Time</strong>
-                    <span>${formatDate(event.date)} - ${formatDate(event.endDate)}</span>
+                    <strong>Date</strong>
+                    <span>${formatDate(event.date)}</span>
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <span class="info-item-icon">⏰</span>
+                <div class="info-item-content">
+                    <strong>Time</strong>
                     <span>${event.time} - ${event.endTime}</span>
                 </div>
             </div>
@@ -451,18 +458,10 @@ function showEventDetail(event) {
             </div>
             
             <div class="info-item">
-                <span class="info-item-icon"></span>
+                <span class="info-item-icon">💰</span>
                 <div class="info-item-content">
-                    <strong>Registration Fee</strong>
+                    <strong>Fee</strong>
                     <span class="${event.fee === 0 ? 'free' : ''}">${event.fee === 0 ? 'FREE' : `₹${event.fee}`}</span>
-                </div>
-            </div>
-            
-            <div class="info-item">
-                <span class="info-item-icon">📧</span>
-                <div class="info-item-content">
-                    <strong>Contact</strong>
-                    <span>${event.contact}</span>
                 </div>
             </div>
         </div>
