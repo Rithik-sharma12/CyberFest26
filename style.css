@@ -1559,12 +1559,35 @@ body::before {
     .stat-label {
         font-size: 0.65rem;
     }
+
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-logos {
+        gap: 0.3rem;
+    }
+
+    .college-logo,
+    .iet-logo,
+    .accreditation-logo {
+        height: 30px;
+    }
 }
 
 /* Mobile Styles */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
+    }
+
+    .nav-logos {
+        display: none;
+    }
+
+    .nav-left {
+        flex-direction: row;
+        align-items: center;
     }
 
     .nav-links {
@@ -1670,6 +1693,15 @@ body::before {
     .events-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .event-image {
+        height: 160px;
+    }
+
+    .event-content {
+        padding: 1rem;
     }
 
     .filters {
@@ -1781,7 +1813,17 @@ body::before {
     }
 
     .event-card {
-        padding: 1rem;
+        padding: 0;
+        border-radius: 12px;
+    }
+
+    .event-image {
+        height: 140px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .event-content {
+        padding: 0.8rem;
     }
 
     .event-title {
@@ -1792,9 +1834,15 @@ body::before {
         font-size: 0.85rem;
     }
 
+    .event-description {
+        font-size: 0.85rem;
+        -webkit-line-clamp: 2;
+    }
+
     .modal-content {
         padding: 1rem;
         margin: 0.5rem;
+        border-radius: 12px;
     }
 }
 
