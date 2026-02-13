@@ -30,7 +30,7 @@ const events = [
         perPerson: 100,
         team: 250,
         category: 'cultural',
-        image: '',
+        image: 'images/AmongUs.jpeg',
         contact: 'amongus@cyberfest26.edu',
         isOpen: true
     },
@@ -46,7 +46,7 @@ const events = [
         perPerson: 100,
         team: 250,
         category: 'tech',
-        image: '',
+        image: 'images/hiddenkey-banner.jpeg',
         contact: 'hiddenkey@cyberfest26.edu',
         isOpen: true
     },
@@ -62,7 +62,7 @@ const events = [
         perPerson: 0,
         team: 0,
         category: 'business',
-        image: '',
+        image: 'images/mindspark-banner.jpeg',
         contact: 'mindspark@cyberfest26.edu',
         isOpen: true
     },
@@ -78,7 +78,7 @@ const events = [
         perPerson: 100,
         team: 250,
         category: 'tech',
-        image: '',
+        image: 'images/ttt-banner.jpeg',
         contact: 'ttt@cyberfest26.edu',
         isOpen: true
     }
