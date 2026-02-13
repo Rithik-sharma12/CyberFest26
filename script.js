@@ -11,7 +11,8 @@ const events = [
         endDate: '2026-02-26',
         endTime: '6:00 PM',
         venue: 'Cyber Security Lab, Block C',
-        fee: 250,
+        perPerson: 100,
+        team: 250,
         category: 'tech',
         image: '',
         contact: 'nyxctf@cyberfest26.edu',
@@ -26,7 +27,8 @@ const events = [
         endDate: '2026-02-26',
         endTime: '8:00 PM',
         venue: 'Student Activity Center',
-        fee: 250,
+        perPerson: 100,
+        team: 250,
         category: 'cultural',
         image: '',
         contact: 'amongus@cyberfest26.edu',
@@ -41,7 +43,8 @@ const events = [
         endDate: '2026-02-26',
         endTime: '5:00 PM',
         venue: 'Campus-wide Event',
-        fee: 250,
+        perPerson: 100,
+        team: 250,
         category: 'tech',
         image: '',
         contact: 'hiddenkey@cyberfest26.edu',
@@ -56,7 +59,8 @@ const events = [
         endDate: '2026-02-26',
         endTime: '6:00 PM',
         venue: 'Innovation Hub',
-        fee: 0,
+        perPerson: 0,
+        team: 0,
         category: 'business',
         image: '',
         contact: 'mindspark@cyberfest26.edu',
@@ -71,7 +75,8 @@ const events = [
         endDate: '2026-02-26',
         endTime: '4:30 PM',
         venue: 'Digital Forensics Lab',
-        fee: 250,
+        perPerson: 100,
+        team: 250,
         category: 'tech',
         image: '',
         contact: 'ttt@cyberfest26.edu',
@@ -413,8 +418,8 @@ function createEventCard(event) {
                 </div>
                 
                 <div class="event-footer">
-                    <div class="event-price ${event.fee === 0 ? 'free' : ''}">
-                        ${event.fee === 0 ? 'FREE' : `₹${event.fee}`}
+                    <div class="event-price ${event.perPerson === 0 ? 'free' : ''}">
+                        ${event.perPerson === 0 ? 'FREE' : `₹${event.perPerson}/person`}
                     </div>
                     <button class="details-btn">
                         View Details
@@ -466,10 +471,18 @@ function showEventDetail(event) {
             </div>
             
             <div class="info-item">
+                <span class="info-item-icon">�</span>
+                <div class="info-item-content">
+                    <strong>Date</strong>
+                    <span>${new Date(event.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                </div>
+            </div>
+            
+            <div class="info-item">
                 <span class="info-item-icon">💰</span>
                 <div class="info-item-content">
                     <strong>Fee</strong>
-                    <span class="${event.fee === 0 ? 'free' : ''}">${event.fee === 0 ? 'FREE' : `₹${event.fee}`}</span>
+                    <span class="${event.perPerson === 0 ? 'free' : ''}">${event.perPerson === 0 ? 'FREE' : `Per Person: ₹${event.perPerson} | Team: ₹${event.team}`}</span>
                 </div>
             </div>
         </div>
