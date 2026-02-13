@@ -408,11 +408,11 @@ function createEventCard(event) {
                 
                 <div class="event-details">
                     <div class="detail-row">
-                        <span class="detail-icon">ðŸ“…</span>
+                        <span class="detail-icon">📅</span>
                         <span>${formatDate(event.date)} at ${event.time}</span>
                     </div>
                     <div class="detail-row">
-                        <span class="detail-icon">ðŸ“</span>
+                        <span class="detail-icon">📍</span>
                         <span>${event.venue}</span>
                     </div>
                 </div>
