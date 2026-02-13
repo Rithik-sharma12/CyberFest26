@@ -475,7 +475,7 @@ function showEventDetail(event) {
         </div>
         
         <div class="modal-btn-group">
-            <button class="modal-cancel-btn" onclick="closeEventModal()">Cancel</button>
+            <a href="https://docs.google.com/forms/d/1ZMU1JAAQxCaElYw-bK85jC8CGw9ze1sX4wdVypKBSI4/edit?pli=1" target="_blank" class="modal-register-btn">Register Now</a>
         </div>
     `;
     

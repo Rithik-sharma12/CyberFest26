@@ -1238,23 +1238,25 @@ body::before {
     margin-top: 0.5rem;
 }
 
-.modal-cancel-btn {
+.modal-register-btn {
     flex: 1;
-    padding: 0.6rem;
-    background: transparent;
-    color: var(--text-muted);
-    border: 2px solid var(--border);
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--dark);
+    border: none;
     border-radius: 50px;
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
 }
 
-.modal-cancel-btn:hover {
-    border-color: var(--primary);
-    color: var(--primary);
-    background: rgba(0, 212, 255, 0.1);
+.modal-register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 212, 255, 0.6);
 }
 
 /* Registration Form */
