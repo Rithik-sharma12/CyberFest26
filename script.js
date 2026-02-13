@@ -310,12 +310,20 @@ function setupNavigation() {
     
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-            
             const target = link.getAttribute('href');
-            document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+            
+            // Only handle anchor links (#home, #about), let page links navigate normally
+            if (target.startsWith('#')) {
+                e.preventDefault();
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                const targetElement = document.querySelector(target);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            // For external links like events.html, let them navigate normally
         });
     });
 
