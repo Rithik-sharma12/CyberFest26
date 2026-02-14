@@ -1088,8 +1088,9 @@ body::before {
 }
 
 .about-image {
-    flex: 1;
-    max-width: 450px;
+    flex: 1.2;
+    max-width: 550px;
+    min-width: 400px;
 }
 
 .about-img {
