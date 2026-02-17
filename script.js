@@ -487,7 +487,13 @@ function showEventDetail(event) {
                 </div>
             </div>
         </div>
-        
+
+        <div class="event-contact-section">
+            <h4>Organisers / Contacts</h4>
+            ${event.lead1 || event.phone1 ? `<div class="contact-row"><strong>${event.lead1 || ''}</strong> ${event.phone1 ? `<a href="tel:${(event.phone1||'').replace(/\s/g,'')}">${event.phone1}</a>` : ''}</div>` : ''}
+            ${event.lead2 || event.phone2 ? `<div class="contact-row"><strong>${event.lead2 || ''}</strong> ${event.phone2 ? `<a href="tel:${(event.phone2||'').replace(/\s/g,'')}">${event.phone2}</a>` : ''}</div>` : ''}
+        </div>
+
         <div class="modal-btn-group">
             <a href="https://docs.google.com/forms/d/1ZMU1JAAQxCaElYw-bK85jC8CGw9ze1sX4wdVypKBSI4/edit?pli=1" target="_blank" class="modal-register-btn">Register Now</a>
         </div>
