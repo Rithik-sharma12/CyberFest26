@@ -16,6 +16,10 @@ const events = [
         category: 'tech',
         image: 'images/ctf-banner.png',
         contact: 'nyxctf@cyberfest26.edu',
+        lead1: 'Rithik Sharma A',
+        phone1: '+91 93634 60499',
+        lead2: 'Ritesh V',
+        phone2: '+91 72009 61609',
         isOpen: true
     },
     {
@@ -32,6 +36,10 @@ const events = [
         category: 'cultural',
         image: 'images/AmongUs.jpeg',
         contact: 'amongus@cyberfest26.edu',
+        lead1: 'Sandhiya D',
+        phone1: '+91 9176989522',
+        lead2: 'Yukesh bala M',
+        phone2: '+91 8608319666',
         isOpen: true
     },
     {
@@ -48,6 +56,10 @@ const events = [
         category: 'tech',
         image: 'images/hiddenkey-banner.jpeg',
         contact: 'hiddenkey@cyberfest26.edu',
+        lead1: 'Shreya',
+        phone1: '+91 9360221357',
+        lead2: 'Harish',
+        phone2: '+91 6379735693',
         isOpen: true
     },
     {
@@ -64,6 +76,10 @@ const events = [
         category: 'business',
         image: 'images/mindspark-banner.jpeg',
         contact: 'mindspark@cyberfest26.edu',
+        lead1: 'Ashwanthika K S',
+        phone1: '+91 6374664023',
+        lead2: 'Sumaiya Fathima M',
+        phone2: '+91 7358485568',
         isOpen: true
     },
     {
@@ -80,6 +96,10 @@ const events = [
         category: 'tech',
         image: 'images/ttt-banner.jpeg',
         contact: 'ttt@cyberfest26.edu',
+        lead1: 'Sarah Jeslyn J',
+        phone1: '+91 8807470839',
+        lead2: 'Nirmalkumar S',
+        phone2: '+91 7338831332',
         isOpen: true
     }
 ];
